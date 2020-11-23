@@ -1,0 +1,3 @@
+package mdavatar
+
+//go:generate go-bindata -nomemcopy -pkg=mdavatar -ignore="\\.DS_Store|README.md|TRANSLATORS" -debug=false -o=static_gen.go static/...
