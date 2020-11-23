@@ -35,7 +35,9 @@ type Config struct {
 	avatarSize          int
 	padding             int
 	letterFont          string
+	letterFontContent   []byte
 	asianFont           string
+	asianFontContent    []byte
 	enableAsianFontChar bool
 	colors              []color.RGBA
 	background          *image.RGBA
@@ -95,14 +97,16 @@ func (config *Config) drawText() (*image.RGBA, error) {
 	var (
 		fgColor  image.Image
 		fontSize = 128.0
+		err      error
 	)
 	fgColor = image.White
-	fontBytes, err := ioutil.ReadFile("static/NotoSansSC-Regular.otf")
+
+	fontContent, err := config.fontContent()
 	if err != nil {
 		return nil, err
 	}
 
-	fontFace, err := opentype.Parse(fontBytes)
+	fontFace, err := opentype.Parse(fontContent)
 	if err != nil {
 		return nil, err
 	}
@@ -131,4 +135,35 @@ func (config *Config) drawText() (*image.RGBA, error) {
 	}
 	fontDrawer.DrawString(config.avatarText)
 	return config.background, err
+}
+
+func (config *Config) fontContent() ([]byte, error) {
+	var content []byte
+	var err error
+
+	if config.enableAsianFontChar {
+		if config.asianFont != "" {
+			content, err = ioutil.ReadFile(config.asianFont)
+			if err != nil {
+				return nil, err
+			}
+
+			config.asianFontContent = content
+		}
+
+		content = []byte(config.asianFontContent)
+	} else {
+		if config.letterFont != "" {
+			content, err = ioutil.ReadFile(config.letterFont)
+			if err != nil {
+				return nil, err
+			}
+
+			config.letterFontContent = content
+		}
+
+		content = []byte(config.asianFontContent)
+	}
+
+	return content, nil
 }

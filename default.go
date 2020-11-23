@@ -9,11 +9,11 @@ import (
 // DefaultConfig config on mdavatar default
 // can be used directly
 var DefaultConfig = &Config{
-	avatarTextHandle: DefaultAvatarTextHandle,
-	avatarSize:       256,
-	letterFont:       "static/Roboto-Light.ttf",
-	asianFont:        "static/NotoSansSC-Regular.otf",
-	colors:           DefaultColors,
+	avatarTextHandle:  DefaultAvatarTextHandle,
+	avatarSize:        256,
+	colors:            DefaultColors,
+	letterFontContent: MustAsset("static/Roboto-Light.ttf"),
+	asianFontContent:  MustAsset("static/NotoSansSC-Regular.otf"),
 }
 
 // DefaultColors colors on mdavatar default
