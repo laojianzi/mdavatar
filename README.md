@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#">
-    <img alt="MDAvatar" width="128" height="128" src="https://raw.githubusercontent.com/laojianzi/mdavatar/master/mdavatar.png">
+    <img alt="MDAvatar" width="128" height="128" src="https://github.com/laojianzi/mdavatar/blob/main/mdavatar.png?raw=true">
   </a>
 </p>
 <p align="center">
