@@ -151,7 +151,7 @@ func (config *Config) fontContent() ([]byte, error) {
 			config.asianFontContent = content
 		}
 
-		content = []byte(config.asianFontContent)
+		content = config.asianFontContent
 	} else {
 		if config.letterFont != "" {
 			content, err = ioutil.ReadFile(config.letterFont)
@@ -162,7 +162,7 @@ func (config *Config) fontContent() ([]byte, error) {
 			config.letterFontContent = content
 		}
 
-		content = []byte(config.asianFontContent)
+		content = config.asianFontContent
 	}
 
 	return content, nil
