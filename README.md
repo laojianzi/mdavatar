@@ -67,6 +67,7 @@ func main() {
 
 ## TODO
 
+- [ ] 支持 cli (生成 png/jpg)
 - [ ] 支持自定义形状 (圆形、椭圆形、方形 ...)
 - [ ] 支持多种返回形式 (HTTP、Base64、WriteToFile ...)
 
