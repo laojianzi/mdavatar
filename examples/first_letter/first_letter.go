@@ -11,18 +11,18 @@ import (
 )
 
 func main() {
-	initials := "LR"
-	avatar, err := mdavatar.New(initials).Build()
+	avatar, err := mdavatar.New("MDAvatar").Build()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	filename := fmt.Sprintf("out-%d.png", time.Now().Unix())
+	filename := fmt.Sprintf("mdavatar-%d.png", time.Now().Unix())
 	file, err := os.Create(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	if err := png.Encode(file, avatar); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }
