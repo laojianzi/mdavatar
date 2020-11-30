@@ -6,7 +6,7 @@
   </a>
 </p>
 <p align="center">
-  <b>MDAvatar</b> 可以根据字符串生成单字符头像，并且可以高度自定义
+  <b>MDAvatar</b> 可以根据字符串生成单字符头像，并且可以高度自定义，支持生成中文头像
 </p>
 
 ## Features
