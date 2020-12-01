@@ -25,6 +25,7 @@ import (
 	"golang.org/x/image/font/opentype"
 	"golang.org/x/image/math/fixed"
 
+	"github.com/laojianzi/mdavatar/style"
 	"github.com/laojianzi/mdavatar/util"
 )
 
@@ -76,6 +77,18 @@ func (config *Config) Build() (*image.RGBA, error) {
 	}
 
 	return config.drawText()
+}
+
+// Builds generate a image from config by a build style
+func (config *Config) Builds(newStyle style.MDAvatarBuildStyleNewFunc) (*image.RGBA, error) {
+	img, err := config.Build()
+	if err != nil {
+		return nil, err
+	}
+
+	des := image.NewRGBA(img.Rect)
+	draw.DrawMask(des, des.Bounds(), img, image.Point{}, newStyle(img), image.Point{}, draw.Over)
+	return des, nil
 }
 
 // Background new a background image from Config.avatarSize and Config.colors
